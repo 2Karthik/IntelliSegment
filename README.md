@@ -60,12 +60,6 @@ Repository Structure
 
 IntelliSegment/
 ├── README.md
-├── requirements.txt
-├── pyproject.toml
-├── config.example.yaml
-├── FIGURE_1_ARCHITECTURE.mmd
-├── FIGURE_1_CAPTION.txt
-├── MANUSCRIPT_METHOD.txt
 ├── src/
 │   └── intellisegment/
 │       ├── __init__.py
