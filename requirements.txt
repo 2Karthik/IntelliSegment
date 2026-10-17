@@ -1,0 +1,11 @@
+torch>=2.0.0
+torchvision>=0.15.0
+opencv-python>=4.7.0
+pillow>=9.4.0
+numpy>=1.22.0
+pycocotools>=2.0.6
+tqdm>=4.65.0
+ftfy>=6.1.1
+regex>=2022.10.31
+git+https://github.com/openai/CLIP.git
+git+https://github.com/facebookresearch/segment-anything-2.git
