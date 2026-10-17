@@ -54,28 +54,6 @@ S-measure ((S_\alpha))
 E-measure ((E_\phi))
 Mean Absolute Error (MAE)
 
-For reproducible reporting, use validated implementations of S-measure and E-measure and follow the appropriate benchmark preprocessing protocol.
-
-Repository Structure
-
-IntelliSegment/
-├── README.md
-├── src/
-│   └── intellisegment/
-│       ├── __init__.py
-│       ├── detector.py
-│       ├── clip_verifier.py
-│       ├── prompts.py
-│       ├── sam2_segmenter.py
-│       ├── pipeline.py
-│       ├── metrics.py
-│       └── data.py
-├── scripts/
-│   ├── run_image.py
-│   └── evaluate_binary_masks.py
-└── tests/
-    └── test_metrics.py
-
 Installation
 
 1. Install SAM2
@@ -86,12 +64,9 @@ Install SAM2 according to the official Meta implementation and its compatibility
 
 Running Inference
 
-To process an image, execute:
-
-python scripts/run_image.py \
-    --image path/to/input.jpg \
-    --config config.yaml \
-    --output outputs
+pip install super-gradients ftfy regex tqdm pycocotools opencv-python torch torchvision
+# Install SAM2 from official repository
+pip install git+https://github.com/facebookresearch/segment-anything-2.git
 
 Reproducibility and Limitations
 
