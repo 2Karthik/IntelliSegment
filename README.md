@@ -1,6 +1,26 @@
 # IntelliSegment: A Sequential Framework for Multi-Object Detection and Mask Generation using YOLO-NAS, CLIP and SAM2
 
-Official repository for **IntelliSegment**, a hybrid visual framework integrating object detection (YOLO-NAS), zero-shot semantic verification (CLIP), and fine-grained promptable mask generation (SAM2).
+Overview
+
+IntelliSegment is a sequential computer vision framework designed to combine object detection, vision-language semantic verification, and prompt-based segmentation in a unified pipeline.
+
+The framework integrates:
+
+YOLO-NAS for object detection and bounding-box generation.
+
+CLIP for semantic verification of detected image regions using category-based text prompts.
+
+SAM2 (Segment Anything Model 2) for generating segmentation masks from verified bounding-box prompts.
+
+The objective is to combine object localization, semantic consistency checking, and precise mask generation into a modular pipeline.
+
+Datasets
+
+The framework is intended to support evaluation using the following datasets:
+
+PASCAL VOC: Commonly used for object detection and semantic segmentation evaluation.
+
+ECSSD: A salient-object segmentation dataset used for evaluating foreground segmentation quality.
 
 ---
 
@@ -20,17 +40,6 @@ SAM2 Mask Segmentor ◄────────────────── Ve
 Final Instance Masks
 ```
 
----
-
-## 📊 Experimental Results (PASCAL VOC 2012 Validation Set)
-
-| Method | Component Breakdown | $AP_{50}^{box}$ (%) | $AP_{50:95}^{box}$ (%) | $AP_{50}^{mask}$ (%) | $AP_{50:95}^{mask}$ (%) |
-| :--- | :--- | :---: | :---: | :---: | :---: |
-| **YOLO-NAS Baseline** | YOLO-NAS | 81.4 | 58.6 | — | — |
-| **Ablation Baseline** | YOLO-NAS + SAM2 | 81.4 | 58.6 | 76.8 | 52.3 |
-| **IntelliSegment (Ours)** | **YOLO-NAS + CLIP + SAM2** | **84.2** | **61.8** | **80.3** | **56.1** |
-
----
 
 ## 🚀 Quick Start & Installation
 
@@ -47,7 +56,7 @@ wget https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_large.p
 ```
 
 ### 3. Generate Prediction Artifacts
-To recreate the serialized COCO-formatted prediction outputs in `artifacts/`:
+The prediction outputs in `artifacts/`:
 ```bash
 python generate_artifacts.py
 ```
@@ -62,6 +71,6 @@ python evaluate.py --gt_json data/pascal_voc2012_val.json --img_dir data/VOCdevk
 ## 📁 Repository Structure
 * `intellisegment_pipeline.py`: Core inference wrapper combining YOLO-NAS, CLIP, and SAM2.
 * `metrics.py`: Standard instance segmentation ($AP$) and perceptual ($S_\alpha, E_\phi, MAE$) evaluation utilities.
-* `evaluate.py`: Standard evaluation runner on PASCAL VOC 2012 validation benchmark.
+* `evaluate.py`: Standard evaluation runner on PASCAL VOC validation benchmark.
 * `generate_artifacts.py`: Serializes predictions (`pascal_baseline.json`, `pascal_intellisegment.json`) for verification.
-* `artifacts/`: Pre-computed prediction files submitted for reviewer validation.
+* `artifacts/`: Pre-computed prediction files.
